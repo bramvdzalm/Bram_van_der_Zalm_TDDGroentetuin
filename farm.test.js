@@ -26,7 +26,7 @@ describe("getYieldForCrop", () => {
 });
 
 describe("getTotalYield", () => {
-    test("Calculate total yield with multiple crops", () => {
+    test("Calculate total yield with multiple cropss", () => {
         const corn = {
             name: "corn",
             yield: 3,

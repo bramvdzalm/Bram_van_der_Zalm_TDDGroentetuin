@@ -17,5 +17,4 @@ const getTotalYield = ({ crops }, influencingFactors) => {
 
 
 
-
 module.exports = { getYieldForPlant, getYieldForCrop, getTotalYield }
