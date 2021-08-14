@@ -6,10 +6,10 @@ const getYieldForCrop = (crop, corn) => {
     return crop.numCrops * getYieldForPlant(crop.crop, corn)
   }
   
-const getTotalYield = ({ crops }, influencingFactors) => {
+const getTotalYield = ({ crops }) => {
     let total = 0;
     crops.forEach((crop) => {
-        total += getYieldForCrop(crop, influencingFactors);
+        total += getYieldForCrop(crop);
     });
     return total;
   };
