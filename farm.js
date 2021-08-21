@@ -25,8 +25,8 @@ const getTotalYield = ({ crops }, environmentFactors ) => {
 const getCostsForCrop = (input) => {
     return input.numCrops * 1
   };
-const getRevenueForCrop = (crop) => {
-    return getYieldForCrop(crop) * crop.crop.salesPrice
+const getRevenueForCrop = (crop, environmentFactors) => {
+    return getYieldForCrop(crop, environmentFactors) * crop.crop.salesPrice
   };
 
 const getProfitForCrop = (crop) => {

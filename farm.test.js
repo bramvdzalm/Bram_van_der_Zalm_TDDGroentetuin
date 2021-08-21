@@ -300,3 +300,53 @@ describe("getTotalYield", () => {
     });
 
 });
+
+describe("getRevenueForCrop", () => {
+    test("Get revenue for crop with environment factors corn", () => {
+        const corn = {
+            name: "corn",
+            yield: 3,
+            salesPrice: 2,
+            factors: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+        const environmentFactors = {
+            sun: "low",
+        };
+        const input = {
+            crop: corn,
+            numCrops: 10,
+        };
+        expect(getRevenueForCrop(input, environmentFactors)).toBe(30);
+    });
+});
+
+describe("getRevenueForCrop", () => {
+    test("Get revenue for crop with environment factors paprika", () => {
+        const paprika = {
+            name: "paprika",
+            yield: 8,
+            salesPrice: 4,
+            factors: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+        const environmentFactors = {
+            sun: "medium",
+        };
+        const input = {
+            crop: paprika,
+            numCrops: 10,
+        };
+        expect(getRevenueForCrop(input, environmentFactors)).toBe(320);
+    });
+});
