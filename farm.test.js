@@ -32,7 +32,7 @@ describe("getYieldForCrop", () => {
 });
 
 describe("getTotalYield", () => {
-    test("Calculate total yield with multiple cropss", () => {
+    test("Calculate total yield with multiple crops with environment factors", () => {
         const corn = {
             name: "corn",
             yield: 3,
@@ -398,5 +398,42 @@ describe("getProfitForCrop", () => {
             numCrops: 10,
         };
         expect(getProfitForCrop(input, environmentFactors)).toBe(190);
+    });
+});
+
+describe("getTotalProfit", () => {
+    test("Calculate total profit with multiple crops with environment factors", () => {
+        const corn = {
+            name: "corn",
+            yield: 3,
+            salesPrice: 2,
+            factors: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+        const paprika = {
+            name: "paprika",
+            yield: 4,
+            salesPrice: 4,
+            factors: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+        const environmentFactors = {
+            sun: "low",
+        };
+        const crops = [
+            { crop: corn, numCrops: 5 },
+            { crop: paprika, numCrops: 2 },
+        ];
+        expect(getTotalProfit({ crops }, environmentFactors)).toBe(24)
     });
 });
