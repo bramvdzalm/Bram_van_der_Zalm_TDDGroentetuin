@@ -224,3 +224,79 @@ describe("getYieldForCrop", () => {
         expect(getYieldForCrop(input, environmentFactors)).toBe(112);
     });
 });
+
+describe("getTotalYield", () => {
+    test("Calculate total yield with multiple cropss", () => {
+        const corn = {
+            name: "corn",
+            yield: 10,
+            factors: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+
+        const pumpkin = {
+            name: "pumpkin",
+            yield: 10,
+            factors: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+
+        const environmentFactors = {
+            sun: "high",
+        };
+        const crops = [
+            { crop: corn, numCrops: 5 },
+            { crop: pumpkin, numCrops: 2 },
+        ];
+        expect(getTotalYield({ crops }, environmentFactors)).toBe(105);
+    });
+
+});
+
+describe("getTotalYield", () => {
+    test("Calculate total yield with multiple cropss", () => {
+        const corn = {
+            name: "corn",
+            yield: 15,
+            factors: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+
+        const pumpkin = {
+            name: "pumpkin",
+            yield: 40,
+            factors: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+
+        const environmentFactors = {
+            sun: "low",
+        };
+        const crops = [
+            { crop: corn, numCrops: 4 },
+            { crop: pumpkin, numCrops: 2 },
+        ];
+        expect(getTotalYield({ crops }, environmentFactors)).toBe(70);
+    });
+
+});
