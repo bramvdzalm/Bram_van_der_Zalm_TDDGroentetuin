@@ -133,3 +133,44 @@ describe("getTotalProfit", () => {
     });
 });
 
+describe("getYieldForPlant", () => {
+    const corn = {
+        name: "corn",
+        yield: 30,
+        factors: {
+            sun: {
+              low: -50,
+              medium: 0,
+              high: 50,
+            },
+          },
+    };
+    const environmentFactors = {
+        sun: "low",
+      };
+
+    test("Get yield for plant with environment factors corn", () => {
+        expect(getYieldForPlant(corn, environmentFactors)).toBe(15);
+    });
+});
+
+describe("getYieldForPlant", () => {
+    const corn = {
+        name: "paprika",
+        yield: 100,
+        factors: {
+            sun: {
+              low: -40,
+              medium: 0,
+              high: 40,
+            },
+          },
+    };
+    const environmentFactors = {
+        sun: "high",
+      };
+
+    test("Get yield for plant with environment factors paprika", () => {
+        expect(getYieldForPlant(corn, environmentFactors)).toBe(140);
+    });
+});
