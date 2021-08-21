@@ -350,3 +350,53 @@ describe("getRevenueForCrop", () => {
         expect(getRevenueForCrop(input, environmentFactors)).toBe(320);
     });
 });
+
+describe("getProfitForCrop", () => {
+    test("Get profit for crop with environemnt factors corn", () => {
+        const corn = {
+            name: "corn",
+            yield: 10,
+            salesPrice: 2,
+            factors: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+        const environmentFactors = {
+            sun: "high",
+        };
+        const input = {
+            crop: corn,
+            numCrops: 10,
+        };
+        expect(getProfitForCrop(input, environmentFactors)).toBe(290);
+    });
+});
+
+describe("getProfitForCrop", () => {
+    test("Get profit for crop with environemnt factors paprika", () => {
+        const paprika = {
+            name: "paprika",
+            yield: 10,
+            salesPrice: 4,
+            factors: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+        const environmentFactors = {
+            sun: "low",
+        };
+        const input = {
+            crop: paprika,
+            numCrops: 10,
+        };
+        expect(getProfitForCrop(input, environmentFactors)).toBe(190);
+    });
+});
