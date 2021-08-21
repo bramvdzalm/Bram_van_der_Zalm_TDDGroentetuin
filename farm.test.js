@@ -155,7 +155,7 @@ describe("getYieldForPlant", () => {
 });
 
 describe("getYieldForPlant", () => {
-    const corn = {
+    const paprika = {
         name: "paprika",
         yield: 100,
         factors: {
@@ -171,6 +171,56 @@ describe("getYieldForPlant", () => {
       };
 
     test("Get yield for plant with environment factors paprika", () => {
-        expect(getYieldForPlant(corn, environmentFactors)).toBe(140);
+        expect(getYieldForPlant(paprika, environmentFactors)).toBe(140);
+    });
+});
+
+describe("getYieldForCrop", () => {
+    test("Get yield for crop with environment factors corn", () => {
+        const corn = {
+            name: "corn",
+            yield: 50,
+            factors: {
+                sun: {
+                  low: -50,
+                  medium: 0,
+                  high: 50,
+                },
+              },
+        };
+        const environmentFactors = {
+            sun: "low",
+          };
+
+        const input = {
+            crop: corn,
+            numCrops: 10,
+        };
+        expect(getYieldForCrop(input, environmentFactors)).toBe(250);
+    });
+});
+
+describe("getYieldForCrop", () => {
+    test("Get yield for crop with environment factors paprika", () => {
+        const paprika = {
+            name: "paprika",
+            yield: 14,
+            factors: {
+                sun: {
+                  low: -40,
+                  medium: 0,
+                  high: 40,
+                },
+              },
+        };
+        const environmentFactors = {
+            sun: "medium",
+          };
+
+        const input = {
+            crop: paprika,
+            numCrops: 8,
+        };
+        expect(getYieldForCrop(input, environmentFactors)).toBe(112);
     });
 });

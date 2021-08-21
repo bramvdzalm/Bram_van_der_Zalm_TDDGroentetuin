@@ -11,8 +11,8 @@ const getYieldForPlant = (plant, environmentFactors) => {
     return plant.yield + yieldWithFactors
   }
 
-const getYieldForCrop = (crop, corn) => {
-    return crop.numCrops * getYieldForPlant(crop.crop, corn)
+const getYieldForCrop = (crop, environmentFactors) => {
+    return crop.numCrops * getYieldForPlant(crop.crop, environmentFactors)
   }
   
 const getTotalYield = ({ crops }) => {
